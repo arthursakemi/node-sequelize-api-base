@@ -1,0 +1,41 @@
+{
+  "name": "trz-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node api/index.js",
+    "dev": "nodemon api/index.js",
+    "reset-db": "npm run drop-db && npm run create-db && npm run migrate-db && npm run seed-db",
+    "drop-db": "npx sequelize-cli db:drop",
+    "create-db": "npx sequelize-cli db:create",
+    "migrate-db": "npx sequelize-cli db:migrate",
+    "seed-db": "npx sequelize-cli db:seed:all",
+    "pretest": "cross-env NODE_ENV=test npm run reset-db",
+    "test": "cross-env NODE_ENV=test jest --testTimeout=10000 --forceExit"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "cross-env": "^7.0.2",
+    "jest": "^26.4.2",
+    "nodemon": "^2.0.4",
+    "sequelize-cli": "^6.2.0",
+    "supertest": "^4.0.2"
+  },
+  "dependencies": {
+    "axios": "^0.19.2",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mysql2": "^2.1.0",
+    "path": "^0.12.7",
+    "sequelize": "^6.3.4"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "coveragePathIgnorePatterns": [
+      "/node_modules/"
+    ]
+  }
+}
